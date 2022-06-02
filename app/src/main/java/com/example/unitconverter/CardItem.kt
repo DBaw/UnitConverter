@@ -11,17 +11,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 
 @Composable
-fun CardItem(text : Unit, modifier: Modifier) : String {
+fun CardItem() {
 
-    Text(
-        text = text.name,
-        fontSize = MaterialTheme.typography.h6.fontSize,
-        fontWeight = FontWeight.Bold,
-        textAlign = TextAlign.Center,
-        maxLines = 1,
-        overflow = TextOverflow.Ellipsis,
-        modifier = modifier
-            .fillMaxWidth()
-    )
-    return text.name
 }

@@ -4,10 +4,7 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
@@ -24,7 +21,7 @@ import com.example.unitconverter.ui.theme.Shapes
 
 @ExperimentalMaterialApi
 @Composable
-fun ExpandableCard(items : List<Unit>) : String{
+fun expandableCard(){
     var expandableState by remember {
         mutableStateOf(false)
     }
@@ -81,20 +78,7 @@ fun ExpandableCard(items : List<Unit>) : String{
                     )
                 }
             }
-
-            if (expandableState) {
-
-                LazyColumn(contentPadding = PaddingValues(12.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)){
-                    items(items){ unit ->
-                        CardItem(text = unit,
-                        modifier = Modifier.clickable { titleState = unit.name
-                        expandableState = !expandableState})
-                    }
-                }
-
-            }
         }
     }
-    return titleState
 }
+

@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 @ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @Composable
-fun expandableCard(
+fun ExpandableCard(
     cardList: List<String>,
     textValue: String,
     labelText: String,

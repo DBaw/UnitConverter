@@ -27,67 +27,72 @@ fun ExpandableCard(
     expandedStatus: (Boolean) -> Unit = {},
     valueChange: (String) -> Unit = {}
 ){
-    Column(modifier = Modifier
-        .border(
-            width = 2.dp,
-            color = MaterialTheme.colors.primary,
-            shape = RoundedCornerShape(10.dp)
-        )
-        .padding(
-            vertical = 5.dp,
-            horizontal = 10.dp
-        )
-        .clickable {
-            expandedStatus(!isExpanded)
-        }, content = {
-        
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            if(textValue.isBlank())
-                Text(
-                    text = labelText,
-                    color = Color.Gray
-                )
-            Text(text = textValue)
-            IconButton(onClick = {
+    Column() {
+        Box(modifier = Modifier
+            .border(
+                width = 2.dp,
+                color = MaterialTheme.colors.primary,
+                shape = RoundedCornerShape(10.dp)
+            )
+            .padding(
+                vertical = 5.dp,
+                horizontal = 10.dp
+            )
+            .clickable {
                 expandedStatus(!isExpanded)
-            }) {
-                Icon(
-                    imageVector = Icons.Default.ArrowDropDown,
-                    contentDescription = "Arrow Dropdown",
-                    tint = MaterialTheme.colors.primary
-                )
             }
-            AnimatedVisibility(visible = isExpanded) {
-                Card(
-                    modifier = Modifier
-                        .padding(top = 1.dp),
-                    elevation = 6.dp,
-                    shape = RoundedCornerShape(10.dp),
-                    backgroundColor = if (!isSystemInDarkTheme()) MaterialTheme.colors.primary else {
-                        MaterialTheme.colors.surface
-                    }
-                ) {
-                    Column(modifier = Modifier
-                        .fillMaxWidth()
-                        .requiredHeightIn(max = 250.dp)
-                        .clip(RoundedCornerShape(10.dp))
-                        .verticalScroll(scrollState)) {
-                        cardList.forEach { label -> 
-                            DropdownMenuItem(onClick = {
-                                valueChange(label)
-                                expandedStatus(false)
-                            }) {
-                                Text(text = label, style = MaterialTheme.typography.body1)
-                            }
+        ) {
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                if(textValue.isBlank())
+                    Text(
+                        text = labelText,
+                        color = Color.Gray
+                    )
+                Text(
+                    text = textValue,
+                    color = if (isSystemInDarkTheme()) Color.White else Color.Black
+                )
+                IconButton(onClick = {
+                    expandedStatus(!isExpanded)
+                }) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowDropDown,
+                        contentDescription = "Arrow Dropdown",
+                        tint = MaterialTheme.colors.primary
+                    )
+                }
+            }
+        }
+        AnimatedVisibility(visible = isExpanded) {
+            Card(
+                modifier = Modifier
+                    .padding(top = 1.dp),
+                elevation = 6.dp,
+                shape = RoundedCornerShape(10.dp),
+                backgroundColor = MaterialTheme.colors.secondary
+
+            ) {
+                Column(modifier = Modifier
+                    .fillMaxWidth()
+                    .requiredHeightIn(max = 250.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .verticalScroll(scrollState)) {
+                    cardList.forEach { label ->
+                        DropdownMenuItem(onClick = {
+                            valueChange(label)
+                            expandedStatus(false)
+                        }) {
+                            Text(text = label, style = MaterialTheme.typography.body1)
                         }
                     }
                 }
             }
         }
-    })
+    }
 }
 

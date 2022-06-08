@@ -2,7 +2,10 @@ package com.example.unitconverter.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+val DarkBlue = Color(0xFF0052BF)
+val Blue = Color(0xFF009DD5)
+val Silver = Color(0xFFA3A7DE)
+
+val DarkYellow = Color(0xFFC3C800)
+val Yellow = Color(0xFFFFFF00)
+val Sand = Color(0xFFFFE143)

@@ -1,6 +1,6 @@
 package com.example.unitconverter
 
-import android.util.Log
+
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -54,6 +54,9 @@ fun MainScreen(
     }
     var result by remember {
         viewModel.result
+    }
+    var error by remember {
+        mutableStateOf(false)
     }
     var resultantStringVisibility by remember {
         mutableStateOf(false)
@@ -193,8 +196,10 @@ fun MainScreen(
                 ),
                 enabled = toText.isNotBlank(),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
-                    textColor = if (isSystemInDarkTheme()) Color.White else Color.Black
-                )
+                    textColor = if (isSystemInDarkTheme()) Color.White else Color.Black,
+                    errorBorderColor = Color.Red
+                ),
+                isError = !viewModel.validateAmount(amount)
             )
 
             Spacer(modifier = Modifier.height(20.dp))

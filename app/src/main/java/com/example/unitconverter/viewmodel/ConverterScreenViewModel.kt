@@ -10,7 +10,6 @@ class ConverterScreenViewModel: ViewModel() {
 
     val converterTypes = CONVERTER_TYPES
     val result = mutableStateOf(0.0f)
-    //val recentList = mutableStateOf(mutableListOf<RecentResult>())
 
     fun getConverterValues(
         converterType: String
@@ -37,16 +36,11 @@ class ConverterScreenViewModel: ViewModel() {
             convertFrom = convertFrom,
             convertTo = convertTo,
             amount = amount
-        ).toBigDecimal().toFloat()
+        ).toBigDecimal().toFloat()}
 
-        /*recentList.value.add(
-            RecentResult(
-                converterType,
-                convertFrom,
-                convertTo,
-                amount.toString(),
-                result.value.toString()
-            )
-        )*/
+    fun validateAmount(
+        amount: String
+    ): Boolean {
+        return !amount.contains(Regex("(?i)[a-z]|[]@~`!#\\[\\*\\\$%\\^&\\(\\)_=+';:\"?><,\\-\\\\ /]"))
     }
 }

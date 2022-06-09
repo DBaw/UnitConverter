@@ -1,7 +1,7 @@
 package com.example.unitconverter.composables
 
+import android.util.Log
 import android.widget.Toast
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -32,18 +32,21 @@ fun ActionButtons(
     ){
         Button(modifier = Modifier.weight(1f),
         onClick = {
-            if(!viewModel.validateFields(
+            if(!viewModel.validateFields (
                     converterType = convertTypeText,
                     convertFrom = fromText,
                     convertTo = toText
-                )){
+                ) && viewModel.validateAmount(amount)){
                 onResultVisibilityChange(true)
                 viewModel.calculateResult(
                     converterType = convertTypeText,
                     convertFrom = fromText,
                     convertTo = toText,
-                    amount = if(amount.isNotEmpty())amount.toDouble() else 0.0
+                    amount = if (amount.isNotEmpty()) amount.toDouble() else 0.0
                 )
+                }else if(!viewModel.validateAmount(amount)){
+                    Toast.makeText(context, "Wrong Value In Amount Field", Toast.LENGTH_SHORT)
+                        .show()
                 }else {
                     Toast.makeText(context, "Select All Fields", Toast.LENGTH_SHORT)
                         .show()

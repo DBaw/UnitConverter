@@ -1,6 +1,7 @@
 package com.example.unitconverter
 
 
+import android.util.DisplayMetrics
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -36,6 +37,7 @@ import com.example.unitconverter.composables.Result
 fun MainScreen(
     viewModel: ConverterScreenViewModel = viewModel()
 ) {
+
     val scrollState = rememberScrollState()
     var expanded by remember {
         mutableStateOf(listOf(false, false, false))
@@ -111,7 +113,7 @@ fun MainScreen(
 
                 }
             )
-            Spacer(modifier = Modifier.height(30.dp))
+            Spacer(modifier = Modifier.height(50.dp))
 
             ExpandableCard(
                 cardList = converterValues,
@@ -164,7 +166,7 @@ fun MainScreen(
                     toText = it
                 }
             )
-            Spacer(modifier = Modifier.height(15.dp))
+            Spacer(modifier = Modifier.height(50.dp))
 
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),

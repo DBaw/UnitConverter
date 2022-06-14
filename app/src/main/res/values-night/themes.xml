@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.UnitConverter" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.UnitConverter" parent="Theme.MaterialComponents.DayNight.DarkActionBar" tools:ignore="DuplicateDefinition">
         <!-- Primary brand color. -->
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/darkBar</item>

@@ -1,7 +1,6 @@
-package com.example.unitconverter
+package com.example.unitconverter.composables
 
 
-import android.util.DisplayMetrics
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -19,7 +18,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -27,8 +25,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.unitconverter.viewmodel.ConverterScreenViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.unitconverter.composables.ActionButtons
-import com.example.unitconverter.composables.Result
+import com.example.unitconverter.ExpandableCard
+
 
 
 @ExperimentalMaterialApi
@@ -87,7 +85,7 @@ fun MainScreen(
                 modifier = Modifier
                     .align(Alignment.Start),
                 text = "UNIT\nCONVERTER",
-                style = TextStyle(
+                style = androidx.compose.ui.text.TextStyle(
                     fontWeight = FontWeight.Black,
                     fontSize = 30.sp,
                     color = if (isSystemInDarkTheme()) Color.White else Color.Black
